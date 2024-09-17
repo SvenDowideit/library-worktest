@@ -22,13 +22,13 @@ export const useData = (path, method, body) => {
     };
   }, [path, method, body]);
 
-  return data;
+  return [data, setData];
 };
 
 
 const baseUrl = "http://localhost:5000";
 
-const request = async (path, method, body) => {
+export const request = async (path, method, body) => {
   const resp = await fetch(`${baseUrl}${path}`, {
     method,
     headers: new Headers({

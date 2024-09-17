@@ -79,4 +79,5 @@ To start the backend API, run `dotnet run` in the API folder. It should be hoste
 
 ## Your Comments
 
-> Please leave any of your comments or docs below.
+1. In implementing /borrow/:bookId, I've changed the API response to return the updated book object. This is then used to cause the page to update.
+   - of course, this is kinda wrong, as we can't mutate the _books...

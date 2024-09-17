@@ -33,15 +33,15 @@ namespace desi_library_api.Models
             return _books.Where(a => a.Borrowed).ToList();
         }
 
-        public ActionResult UpdateBookBorrowStatus(int bookId)
+        public Book? UpdateBookBorrowStatus(int bookId)
         {
             var book = _books.First(a => a.Id == bookId);
             if (book == null)
             {
-                return new NotFoundResult();
+                return book;
             }
             book.Borrowed = !book.Borrowed;
-            return new OkResult();
+            return book;
         }
     }
 }

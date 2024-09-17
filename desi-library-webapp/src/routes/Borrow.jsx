@@ -1,12 +1,13 @@
-import { useData } from "../data";
+import { request, useData } from "../data";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
-import { Routes, Route, useParams } from 'react-router-dom';
+import { useEffect, useState } from "react";
+import { useNavigate, useParams } from 'react-router-dom';
 
 function Borrow() {
   const { bookId } = useParams();
-  const book = useData("/book/getbook?id="+bookId, "GET");
+  const [book, setBook] = useData("/book/getbook?id="+bookId, "GET");
   var action = "Borrow";
 
   if (!book) {
@@ -24,7 +25,7 @@ function Borrow() {
         By {book.author}
       </Box>
       <Box>{book.pages} pages in {book.language}</Box>
-      <Box><BookBorrowOrReturnButton book={book}/></Box>
+      <Box><BookBorrowOrReturnButton book={book} setBook={setBook}/></Box>
     </Box>
   );
 }
@@ -32,6 +33,9 @@ function Borrow() {
 export default Borrow;
 
 function BookBorrowOrReturnButton(props) {
+  const navigate = useNavigate();
+  const [submitBeingHandled, setsubmitBeingHandled] = useState()
+
   const book = props.book;
   var action = "Borrow";
 
@@ -40,10 +44,22 @@ function BookBorrowOrReturnButton(props) {
   }
 
   // TODO: this button should POST to /book/UpdateBookBorrowStatus
+  const handleSubmit = async (e) => {
+    setsubmitBeingHandled(true);  // UI indicator that the API request is in flight
+    console.log('Submitting form'+JSON.stringify(book))
+    request('/book/updatebookborrowstatus?bookId='+book.id, 'PUT').then(function(response) {
+      console.log(response)
+      props.setBook(response)
+      setsubmitBeingHandled(false);
+      return response.ok
+    })
 
-  return   <Button size="small" variant="contained" sx={{ mt: 2 }} href={"/borrow/"+book.id}>
-  {action} Book
-</Button>
+    console.log('Form submitted.')
+  }
+
+  return  <Button size="small" variant="contained" sx={{ mt: 2 }}  onClick={handleSubmit} disabled={submitBeingHandled}>
+    {action} Book
+  </Button>
 }
 
 function Loading() {
