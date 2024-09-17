@@ -27,11 +27,11 @@ function BookRow(props) {
     <span>{book.name}</span>
     <span> by </span>
     <span>{book.author}</span>
-    <BookBorrowOrReturn book={book} />
+    <BookBorrowOrReturnLink book={book} />
 </Typography>
 }
 
-function BookBorrowOrReturn(props) {
+function BookBorrowOrReturnLink(props) {
   const book = props.book;
   var action = "Borrow";
 
