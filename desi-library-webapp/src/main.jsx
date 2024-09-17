@@ -1,6 +1,6 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { Navigate, createBrowserRouter, RouterProvider } from "react-router-dom";
 import Root from "./routes/Root.jsx";
 import Home from "./routes/Home.jsx";
 import Books from "./routes/Books.jsx";
@@ -17,7 +17,11 @@ const router = createBrowserRouter([
     path: "/",
     element: <Root />,
     children: [
-      {
+      { 
+        index: true,
+        element: <Home /> 
+      },
+      { // Redundant, but here in case it's "well known"
         path: "/home",
         element: <Home />
       },

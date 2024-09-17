@@ -22,8 +22,7 @@ The front-end is implemented in React 18 and the web API is implemented with ASP
   - [ ] add a loading... placeholder
 - Implement a routing mechanism for the home and borrow pages.
   - [x] add /borrow route
-  - [ ] Looks to me like the home route already works?
-  - [ ] CONSIDER removing the `Root` / route and using just `Home` as / (why have 2 "homes"?)
+  - [x] CONSIDER removing the `Root` / route and using just `Home` as / (why have 2 "homes"?)
 - [x] Add a button on the home page that will redirect users to the list of books.
   - [x] added a Button
 - Display more information about each book on the books page.
@@ -81,3 +80,4 @@ To start the backend API, run `dotnet run` in the API folder. It should be hoste
 
 1. In implementing /borrow/:bookId, I've changed the API response to return the updated book object. This is then used to cause the page to update.
    - of course, this is kinda wrong, as we can't mutate the _books...
+2. I've changed useData to also return the set() function, and have exported request to make the borrow toggle API call consistent.

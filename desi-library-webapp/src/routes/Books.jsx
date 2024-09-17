@@ -4,7 +4,7 @@ import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 
 function Books() {
-  const booksData = useData("/book/getallbooks", "GET");
+  const [booksData] = useData("/book/getallbooks", "GET");
 
   return (
     <>

@@ -41,7 +41,7 @@ function Root() {
               "aria-labelledby": "basic-button",
             }}
           >
-            <MenuItem component={Link} to={"/home"} onClick={handleClose}>Home</MenuItem>
+            <MenuItem component={Link} to={"/"} onClick={handleClose}>Home</MenuItem>
             <MenuItem component={Link} to={"/books"} onClick={handleClose}>Books</MenuItem>
             <MenuItem component={Link} to={"/borrow"} onClick={handleClose}>Borrow</MenuItem>
           </Menu>
