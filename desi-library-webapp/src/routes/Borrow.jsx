@@ -1,9 +1,13 @@
 import { request, useData } from "../data";
+
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
+
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from 'react-router-dom';
+
+import { Loading } from '../components/Loading'
 
 function Borrow() {
   const { bookId } = useParams();
@@ -60,10 +64,4 @@ function BookBorrowOrReturnButton(props) {
   return  <Button size="small" variant="contained" sx={{ mt: 2 }}  onClick={handleSubmit} disabled={submitBeingHandled}>
     {action} Book
   </Button>
-}
-
-function Loading() {
-  return <Box>
-    <Typography>Loading ...</Typography>
-  </Box>
 }

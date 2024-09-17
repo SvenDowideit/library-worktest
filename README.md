@@ -19,7 +19,7 @@ The front-end is implemented in React 18 and the web API is implemented with ASP
 - Some pages in the app aren't working, so it needs to be fixed.
   - [x] fixed Books use before fetch() crash
   - [ ] CONSIDER replacing with axios or something that has a 'loading' state
-  - [ ] add a loading... placeholder
+  - [x] add a loading... placeholder
 - Implement a routing mechanism for the home and borrow pages.
   - [x] add /borrow route
   - [x] CONSIDER removing the `Root` / route and using just `Home` as / (why have 2 "homes"?)
