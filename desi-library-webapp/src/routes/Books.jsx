@@ -11,7 +11,11 @@ function Books() {
       <Typography variant="h6">Current Books</Typography>
       <Box>
         {booksData && (booksData.map((book) => (
-          <Typography key={book.id}>{book.name}</Typography>
+          <Typography key={book.id}>
+            <span>{book.name}</span>
+            <span> by </span>
+            <span>{book.author}</span>
+          </Typography>
         )))}
       </Box>
       <Button variant="contained" sx={{ mt: 2 }}>
