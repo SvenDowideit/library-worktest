@@ -31,10 +31,13 @@ The front-end is implemented in React 18 and the web API is implemented with ASP
   - [x] Add more info on on the /books page
   - [ ] task implies we should use `/book/getbook` on the books page
   - [ ] CONSIDER makeing getallbooks return all the info that will be displayed there, and
-  - [ ] CONSIDER a `/book/1` ... page that shows that specific book, it's status etc..
+  - [ ] CONSIDER a `/book/1` ... page that shows that specific book, it's status etc.. (this is basically what /borrow/:bookId is, so ... rename?)
 - Implement a new feature on the borrow page to be able to borrow a book and return it.
   - Prevent books from being borrowed until they are returned.
 - Show the users which books cannot be borrowed.
+ - [x] Added Borrowed bool to the SimpleBookDto class, so the /books list can show it ()
+ - [x] Add similar to the /borrow page
+ - [ ] when we have the concept of different users, there will need to be a third state - someone else borrowed
 - Implement unit tests.
 - The project should compile and run after the changes.
 

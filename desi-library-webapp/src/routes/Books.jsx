@@ -11,18 +11,34 @@ function Books() {
       <Typography variant="h6">Current Books</Typography>
       <Box>
         {booksData && (booksData.map((book) => (
-          <Typography key={book.id}>
-            <span>{book.name}</span>
-            <span> by </span>
-            <span>{book.author}</span>
-          </Typography>
+          <BookRow book={book} />
         )))}
       </Box>
-      <Button variant="contained" sx={{ mt: 2 }}>
-        Borrow Book
-      </Button>
     </>
   );
 }
 
 export default Books;
+
+function BookRow(props) {
+  const book = props.book;
+
+  return <Typography key={book.id}>
+    <span>{book.name}</span>
+    <span> by </span>
+    <span>{book.author}</span>
+    <BookBorrowOrReturn book={book} />
+</Typography>
+}
+
+function BookBorrowOrReturn(props) {
+  const book = props.book;
+  var action = "Borrow";
+
+  if (book.borrowed) {
+    action = "Return";
+  }
+  return   <Button size="small" variant="contained" sx={{ mt: 2 }} href={"/borrow/"+book.id}>
+  {action} Book
+</Button>
+}

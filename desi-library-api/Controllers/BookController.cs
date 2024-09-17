@@ -33,7 +33,7 @@ namespace desi_library_api.Controllers
 
             foreach (var book in allBooks)
             {
-                reducedList.Add(new SimpleBookDto() {Id = book.Id, Name = book.Name, Author = book.Author});
+                reducedList.Add(new SimpleBookDto() {Id = book.Id, Name = book.Name, Author = book.Author, Borrowed = book.Borrowed});
             }
 
             return reducedList;
