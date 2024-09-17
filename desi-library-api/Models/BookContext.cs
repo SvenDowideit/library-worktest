@@ -18,9 +18,9 @@ namespace desi_library_api.Models
             return _books;
         }
 
-        // TODO: Implement
-        public Book GetBook(int id) {
-            return null;
+        public Book? GetBook(int id) {
+            // NOTE: yup, it took me quite a few working attempts with ToList, and so on, until i finally found FirstOrDefault
+            return _books.FirstOrDefault(a => a.Id == id);
         }
 
         public IEnumerable<Book> BorrowableBooks()

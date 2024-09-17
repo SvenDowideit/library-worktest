@@ -27,7 +27,10 @@ The front-end is implemented in React 18 and the web API is implemented with ASP
 - [x] Add a button on the home page that will redirect users to the list of books.
   - [x] added a Button
 - Display more information about each book on the books page.
-  - Implement the `/book/getbook` API request.
+  - [x] Implement the `/book/getbook` API request.
+  - [ ] Add more info on on the /books page
+  - [ ] CONSIDER makeing getallbooks return all the info that will be displayed there, and
+  - [ ] CONSIDER a `/book/1` ... page that shows that specific book, it's status etc..
 - Implement a new feature on the borrow page to be able to borrow a book and return it.
   - Prevent books from being borrowed until they are returned.
 - Show the users which books cannot be borrowed.
