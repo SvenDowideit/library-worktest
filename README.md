@@ -43,7 +43,10 @@ You are welcome to add additional packages for these challenges as needed. Pleas
 ### Tooling
 
 - Download and install the [.NET 8 SDK](https://dotnet.microsoft.com/en-us/download).
+  - Ubuntu: `sudo apt install dotnet-sdk-8.0 dotnet8`
 - Download and install [Node.js 20](https://nodejs.org/en/download).
+  - Or use [`nvm`](https://github.com/nvm-sh/nvm) to manage multiple versions of Node.js
+  - run `nvm install` from the `desi-library-webapp` dir
 
 ### Frontend
 
