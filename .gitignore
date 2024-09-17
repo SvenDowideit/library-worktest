@@ -1,0 +1,8 @@
+
+# dotnet build files
+desi-library-api/bin/
+desi-library-api/desi-library-api.sln
+desi-library-api/obj/
+
+# node build files and dependencies
+desi-library-webapp/node_modules/
