@@ -17,8 +17,15 @@ The front-end is implemented in React 18 and the web API is implemented with ASP
 ## Tasks
 
 - Some pages in the app aren't working, so it needs to be fixed.
+  - [x] fixed Books use before fetch() crash
+  - [ ] CONSIDER replacing with axios or something that has a 'loading' state
+  - [ ] add a loading... placeholder
 - Implement a routing mechanism for the home and borrow pages.
-- Add a button on the home page that will redirect users to the list of books.
+  - [x] add /borrow route
+  - [ ] Looks to me like the home route already works?
+  - [ ] CONSIDER removing the `Root` / route and using just `Home` as / (why have 2 "homes"?)
+- [x] Add a button on the home page that will redirect users to the list of books.
+  - [x] added a Button
 - Display more information about each book on the books page.
   - Implement the `/book/getbook` API request.
 - Implement a new feature on the borrow page to be able to borrow a book and return it.
@@ -47,6 +54,7 @@ You are welcome to add additional packages for these challenges as needed. Pleas
 - Download and install [Node.js 20](https://nodejs.org/en/download).
   - Or use [`nvm`](https://github.com/nvm-sh/nvm) to manage multiple versions of Node.js
   - run `nvm install` from the `desi-library-webapp` dir
+- [React Developer Tools](https://react.dev/learn/react-developer-tools) can be installed into your browser to help debug issues
 
 ### Frontend
 
