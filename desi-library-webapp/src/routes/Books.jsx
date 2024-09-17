@@ -10,9 +10,9 @@ function Books() {
     <>
       <Typography variant="h6">Current Books</Typography>
       <Box>
-        {booksData.map((book) => (
+        {booksData && (booksData.map((book) => (
           <Typography key={book.id}>{book.name}</Typography>
-        ))}
+        )))}
       </Box>
       <Button variant="contained" sx={{ mt: 2 }}>
         Borrow Book
