@@ -32,20 +32,21 @@ The front-end is implemented in React 18 and the web API is implemented with ASP
   - [ ] CONSIDER makeing getallbooks return all the info that will be displayed there, and
   - [ ] CONSIDER a `/book/1` ... page that shows that specific book, it's status etc.. (this is basically what /borrow/:bookId is, so ... rename?)
 - Implement a new feature on the borrow page to be able to borrow a book and return it.
-  - Prevent books from being borrowed until they are returned.
+  - [x] CLIENT UX: Prevent books from being borrowed until they are returned. (button only shows the available action)
+  - [ ] SERVER API: Prevent books from being borrowed until they are returned. (need to change to a borrow/return API)
 - Show the users which books cannot be borrowed.
  - [x] Added Borrowed bool to the SimpleBookDto class, so the /books list can show it ()
  - [x] Add similar to the /borrow page
  - [ ] when we have the concept of different users, there will need to be a third state - someone else borrowed
 - [x] Implement unit tests.
-- The project should compile and run after the changes.
+- [x] The project should compile and run after the changes.
 
 This work test code is not necessarily best practice code, if you think it can be improved we encourage you to do so and detail why at the bottom of this README.
 
 ### Optional Challenges
 
 - Add authentication.
-- Add a database.
+- [x] Add a database.
 - Implement e2e tests.
 - Change the architecture to support a better design. Your ideal implementation for this problem.
 
