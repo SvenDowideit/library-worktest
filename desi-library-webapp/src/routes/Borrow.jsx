@@ -5,17 +5,14 @@ import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 
 import { useEffect, useState } from "react";
-import { useNavigate, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 
 import { Loading } from '../components/Loading'
 
 function Borrow() {
   const { bookId } = useParams();
-  const navigate = useNavigate();
   const [book, setBook] = getBook(bookId);
   
-  var action = "Borrow";
-
   if (!book) {
     return <Loading />
   }
