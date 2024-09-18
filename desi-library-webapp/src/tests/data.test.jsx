@@ -6,3 +6,5 @@ test("Get all the books", () => {
   const books = getAllBooks();
   expect(books).toBeNull(); // should be null for a moment..
 });
+
+// TODO: also test getBook and requestBookBorrowToggle

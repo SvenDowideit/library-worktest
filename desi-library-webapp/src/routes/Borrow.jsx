@@ -1,4 +1,4 @@
-import { request, getBook } from "../data";
+import { requestBookBorrowToggle, getBook } from "../data";
 
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
@@ -52,7 +52,7 @@ function BookBorrowOrReturnButton(props) {
   const handleSubmit = async (e) => {
     setsubmitBeingHandled(true);  // UI indicator that the API request is in flight
     console.log('Submitting form'+JSON.stringify(book))
-    request('/book/updatebookborrowstatus?bookId='+book.id, 'PUT').then(function(response) {
+    requestBookBorrowToggle(book.id).then(function(response) {
       console.log(response)
       props.setBook(response)
       setsubmitBeingHandled(false);

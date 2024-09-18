@@ -20,6 +20,15 @@ export const getBook = (bookId) => {
 }
 
 /**
+ * ask the server to toggle the borrow status
+ * @param {*} bookId 
+ * @returns Promise(of a BookData)
+ */
+export const requestBookBorrowToggle = (bookId) => {
+  return request('/book/updatebookborrowstatus?bookId='+bookId, 'PUT');
+}
+
+/**
  * useData hook for communicating with the backend.
  * @param {*} path Relative path from root, ie /books/getallbooks
  * @param {*} method HTTP method to use, ie GET
@@ -47,7 +56,7 @@ const useData = (path, method, body) => {
 
 const baseUrl = "http://localhost:5000";
 
-export const request = async (path, method, body) => {
+const request = async (path, method, body) => {
   const resp = await fetch(`${baseUrl}${path}`, {
     method,
     headers: new Headers({
