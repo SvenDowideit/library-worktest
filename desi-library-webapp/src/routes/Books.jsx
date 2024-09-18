@@ -6,6 +6,7 @@ import Typography from "@mui/material/Typography";
 import Table from '@mui/material/Table';
 import TableCell from '@mui/material/TableCell';
 import TableHead from '@mui/material/TableHead';
+import TableBody from '@mui/material/TableBody';
 import TableRow from '@mui/material/TableRow';
 
 import { Loading } from '../components/Loading'
@@ -31,17 +32,19 @@ function BookList(props) {
     return <Loading  />
   }
   return <Table>
-            <TableHead>
-          <TableRow>
-            <TableCell>Name</TableCell>
-            <TableCell align="left">Authors</TableCell>
-            <TableCell>Borrow</TableCell>
-          </TableRow>
-        </TableHead>
-    {props.booksData.map((book) => (
-    <BookRow book={book} />
-  ))}
-  </Table>
+          <TableHead>
+            <TableRow>
+              <TableCell>Name</TableCell>
+              <TableCell align="left">Authors</TableCell>
+              <TableCell>Borrow</TableCell>
+            </TableRow>
+          </TableHead>
+          <TableBody>
+          {props.booksData.map((book) => (
+            <BookRow key={book.id} book={book} />
+          ))}
+          </TableBody>
+        </Table>
 }
 
 function BookRow(props) {
