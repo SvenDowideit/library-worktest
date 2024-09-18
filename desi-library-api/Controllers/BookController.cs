@@ -61,10 +61,35 @@ namespace desi_library_api.Controllers
 
         // Without being in a database, this update will not reflect in a next REST API request.
         [HttpPut]
-        [Route("/book/UpdateBookBorrowStatus")]
-        public Book? UpdateBookBorrowStatus(int bookId)
+        [Route("/book/AttemptToBorrowBook")]
+        public ActionResult<Book?> AttemptToBorrowBook(int bookId)
         {
-            return _bookContext.UpdateBookBorrowStatus(bookId);
+            var book = _bookContext.GetBook(bookId);
+            if (book == null) {
+                Console.WriteLine("Book not found");
+                return NotFound("Book "+bookId+" Not found");
+            }
+            if (book.Borrowed) {
+                Console.WriteLine("Book currently borrowed");
+                return BadRequest("Book "+bookId+" already borrowed");    // TODO: should probably have more granularity
+            }
+            return _bookContext.AttemptToBorrowBook(book);
+        }
+
+                [HttpPut]
+        [Route("/book/AttemptToReturnBook")]
+        public ActionResult<Book?> AttemptToReturnBook(int bookId)
+        {
+            var book = _bookContext.GetBook(bookId);
+            if (book == null) {
+                Console.WriteLine("Book not found");
+                return NotFound();
+            }
+            if (!book.Borrowed) {
+                Console.WriteLine("Book currently not borrowed");
+                return BadRequest();    // TODO: should probably have more granularity
+            }
+            return _bookContext.AttemptToReturnBook(book);
         }
     }
 }

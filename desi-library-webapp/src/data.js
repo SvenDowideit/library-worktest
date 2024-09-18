@@ -20,12 +20,20 @@ export const getBook = (bookId) => {
 }
 
 /**
- * ask the server to toggle the borrow status
+ * ask the server to borrow the book
  * @param {*} bookId 
  * @returns Promise(of a BookData)
  */
-export const requestBookBorrowToggle = (bookId) => {
-  return request('/book/updatebookborrowstatus?bookId='+bookId, 'PUT');
+export const requestBookBorrow = (bookId) => {
+  return request('/book/attempttoborrowbook?bookId='+bookId, 'PUT');
+}
+/**
+ * ask the server to return the book
+ * @param {*} bookId 
+ * @returns Promise(of a BookData)
+ */
+export const requestBookReturn = (bookId) => {
+  return request('/book/attempttoreturnbook?bookId='+bookId, 'PUT');
 }
 
 /**

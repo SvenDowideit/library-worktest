@@ -56,13 +56,17 @@ namespace desi_library_api.Models
             return books;
         }
 
-        public Book? UpdateBookBorrowStatus(int bookId)
+        public Book? AttemptToBorrowBook(Book book)
         {
-            var book = GetBook(bookId);
-            if (book == null) {
-                return null;
-            }
-            book.Borrowed = !book.Borrowed;
+            book.Borrowed = true;
+            _db.InsertOrReplace(book);
+            // TODO: yeah, no transactions, and really should re-get to get the real value
+            return book;
+        }
+
+        public Book? AttemptToReturnBook(Book book)
+        {
+            book.Borrowed = false;
             _db.InsertOrReplace(book);
             // TODO: yeah, no transactions, and really should re-get to get the real value
             return book;
