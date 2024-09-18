@@ -16,7 +16,8 @@ namespace desi_library_api.Models
 
         // In database, it will be in a seperate table with the fields for date and time of borrowal and return, and the used who borroed etc.
         // but for the easiness to complete this test, I just implemented a flag in this book class.
-        //[Ignore]
+        // TODO: I thought there was a way to implement getters, but they'd need access to the DB, so..
+        [Ignore]
         public bool Borrowed { get; set; }
     }
 
@@ -27,6 +28,7 @@ namespace desi_library_api.Models
     {
         public DateTime DateTime { get; set; }
         public int UserId { get; set; }
+        [PrimaryKey]
         public int BookId { get; set; }
         public bool Borrowed { get; set; } // true for borrowed, and false if it is returned 
     }
