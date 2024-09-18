@@ -1,4 +1,4 @@
-import { request, useData } from "../data";
+import { request, getBook } from "../data";
 
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
@@ -11,7 +11,9 @@ import { Loading } from '../components/Loading'
 
 function Borrow() {
   const { bookId } = useParams();
-  const [book, setBook] = useData("/book/getbook?id="+bookId, "GET");
+  const navigate = useNavigate();
+  const [book, setBook] = getBook(bookId);
+  
   var action = "Borrow";
 
   if (!book) {
@@ -37,7 +39,6 @@ function Borrow() {
 export default Borrow;
 
 function BookBorrowOrReturnButton(props) {
-  const navigate = useNavigate();
   const [submitBeingHandled, setsubmitBeingHandled] = useState()
 
   const book = props.book;

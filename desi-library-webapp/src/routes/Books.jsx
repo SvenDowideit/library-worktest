@@ -1,4 +1,4 @@
-import { useData } from "../data";
+import { getAllBooks } from "../data";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
@@ -14,7 +14,7 @@ import { Loading } from '../components/Loading'
 
 
 function Books() {
-  const [booksData, setBooks] = useData("/book/getallbooks", "GET");
+  const booksData = getAllBooks();
 
   return (
     <>

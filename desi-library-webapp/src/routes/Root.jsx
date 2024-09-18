@@ -43,7 +43,6 @@ function Root() {
           >
             <MenuItem component={Link} to={"/"} onClick={handleClose}>Home</MenuItem>
             <MenuItem component={Link} to={"/books"} onClick={handleClose}>Books</MenuItem>
-            <MenuItem component={Link} to={"/borrow"} onClick={handleClose}>Borrow</MenuItem>
           </Menu>
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
             DESI Library

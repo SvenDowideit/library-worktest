@@ -1,13 +1,32 @@
 import { useEffect, useState } from "react";
 
 /**
+ * Ask the server to give us a list of books
+ * @returns bookDataArray
+ */
+export const getAllBooks = () => {
+  const [booksData] =  useData("/book/getallbooks", "GET");
+  return booksData;
+}
+
+/**
+ * Ask the server to give us a specific book
+ * @param bookId
+ * @returns [bookData, setBookData]
+ */
+export const getBook = (bookId) => {
+  const [data, setData] =  useData("/book/getbook?id="+bookId, "GET");
+  return [data, setData];
+}
+
+/**
  * useData hook for communicating with the backend.
  * @param {*} path Relative path from root, ie /books/getallbooks
  * @param {*} method HTTP method to use, ie GET
  * @param {*} body Body if chosen method requires it.
  * @returns The data that was requested.
  */
-export const useData = (path, method, body) => {
+const useData = (path, method, body) => {
   const [data, setData] = useState();
 
   useEffect(() => {
