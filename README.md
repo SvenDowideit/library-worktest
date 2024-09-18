@@ -33,7 +33,7 @@ The front-end is implemented in React 18 and the web API is implemented with ASP
   - [ ] CONSIDER a `/book/1` ... page that shows that specific book, it's status etc.. (this is basically what /borrow/:bookId is, so ... rename?)
 - Implement a new feature on the borrow page to be able to borrow a book and return it.
   - [x] CLIENT UX: Prevent books from being borrowed until they are returned. (button only shows the available action)
-  - [ ] SERVER API: Prevent books from being borrowed until they are returned. (need to change to a borrow/return API)
+  - [x] SERVER API: Prevent books from being borrowed until they are returned. (need to change to a borrow/return API)
 - Show the users which books cannot be borrowed.
  - [x] Added Borrowed bool to the SimpleBookDto class, so the /books list can show it ()
  - [x] Add similar to the /borrow page
@@ -86,3 +86,7 @@ To start the backend API, run `dotnet run` in the API folder. It should be hoste
 4. moving to SQLite as the Book database
   * `sqlite3 /home/sven/Documents/MyData.db -cmd "select * from Book;"`
   * the location of the database is printed out by the server, but it's platform dependent
+  * if the SQLite DB file doesn't exist, re-initialise it with the original data
+5. replaced the toggle book status API with a borrow, and a return API endpoint, and updated the UI
+  * there is a race condition if the user has more than one browser open to the same borrow page - and I havn't found the way to trigger a re-render.
+

@@ -8,6 +8,7 @@ namespace desi_library_api.Models
 
         public BookContext(List<Book> books)
         {
+            // TODO: look into how to increase the lifetime of the DB connection (tho re-tryable is nice..)
             var databasePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "MyData.db");
             if (Path.Exists(databasePath)) {
                 Console.WriteLine("SQLite database found at "+databasePath);
