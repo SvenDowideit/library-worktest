@@ -37,7 +37,7 @@ The front-end is implemented in React 18 and the web API is implemented with ASP
  - [x] Added Borrowed bool to the SimpleBookDto class, so the /books list can show it ()
  - [x] Add similar to the /borrow page
  - [ ] when we have the concept of different users, there will need to be a third state - someone else borrowed
-- Implement unit tests.
+- [x] Implement unit tests.
 - The project should compile and run after the changes.
 
 This work test code is not necessarily best practice code, if you think it can be improved we encourage you to do so and detail why at the bottom of this README.
@@ -81,3 +81,4 @@ To start the backend API, run `dotnet run` in the API folder. It should be hoste
 1. In implementing /borrow/:bookId, I've changed the API response to return the updated book object. This is then used to cause the page to update.
    - of course, this is kinda wrong, as we can't mutate the _books...
 2. I've changed useData to also return the set() function, and have exported request to make the borrow toggle API call consistent.
+3. I've removed the *Borrow* menu Item, as it's only useful when called with a bookId - see the return/borrow buttons in the Book list
