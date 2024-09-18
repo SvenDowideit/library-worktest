@@ -14,7 +14,7 @@ function Borrow() {
   const [book, setBook] = getBook(bookId);
   
   if (!book) {
-    return <Loading />
+    return <Box><Loading /></Box>
   }
 
   if (book?.borrowed) {

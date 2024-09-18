@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
  * @returns bookDataArray
  */
 export const getAllBooks = () => {
-  const [booksData] =  useData("/book/getallbooks", "GET");
+  const [booksData, setData] =  useData("/book/getallbooks", "GET");
   return booksData;
 }
 
