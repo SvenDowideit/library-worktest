@@ -1,10 +1,13 @@
 #nullable disable
 using System;
+using SQLite;
 
 namespace desi_library_api.Models
 {
+    [Table("Book")]	
     public class Book
     {
+        [PrimaryKey, AutoIncrement]
         public int Id { get; set; }
         public string Name { get; set; }
         public string Author { get; set; }
@@ -13,11 +16,13 @@ namespace desi_library_api.Models
 
         // In database, it will be in a seperate table with the fields for date and time of borrowal and return, and the used who borroed etc.
         // but for the easiness to complete this test, I just implemented a flag in this book class.
+        //[Ignore]
         public bool Borrowed { get; set; }
     }
 
     // Class defined to show how it will be if it is in database
     // (If no record in this table for a book id, which means the book is available )
+    [Table("BookBorrowRecs")]
     public class BookBorrowRecs
     {
         public DateTime DateTime { get; set; }

@@ -1,46 +1,73 @@
 using System.Collections.Generic;
 using System.Linq;
 using Microsoft.AspNetCore.Mvc;
+using SQLite;
 
 namespace desi_library_api.Models
 {
     public class BookContext
     {
-        private readonly IEnumerable<Book> _books;
+        private SQLiteConnection _db;
 
         public BookContext(List<Book> books)
         {
-            _books = books;
+            var databasePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "MyData.db");
+            if (Path.Exists(databasePath)) {
+                Console.WriteLine("SQLite database found at "+databasePath);
+                Console.WriteLine("If you want to start with a new default one, please delete the file");
+                _db = new SQLiteConnection(databasePath);
+
+            } else {
+                Console.WriteLine("SQLite created and initialised at "+databasePath);
+                _db = new SQLiteConnection(databasePath);
+
+                _db.CreateTable<Book>();
+                foreach (Book b in books) {
+                    _db.InsertOrReplace(b);
+                }
+            }
+
         }
 
         public IEnumerable<Book> GetAll()
         {
-            return _books;
+            var books = _db.Query<Book>("SELECT * FROM Book");
+            return books;
         }
 
         public Book? GetBook(int id) {
             // NOTE: yup, it took me quite a few working attempts with ToList, and so on, until i finally found FirstOrDefault
-            return _books.FirstOrDefault(a => a.Id == id);
+            //return _books.FirstOrDefault(a => a.Id == id);
+            var book = _db.Table<Book>().Where(b => b.Id.Equals(id));
+            if (book.Count() == 0) {    // TODO: I presume there's a better way
+                return null;
+            }
+            return book.First<Book>();
         }
 
         public IEnumerable<Book> BorrowableBooks()
         {
-            return _books.Where(a => !a.Borrowed).ToList();
+            //return _books.Where(a => !a.Borrowed).ToList();
+            var books = _db.Table<Book>().Where(b => !b.Borrowed);
+            return books;
         }
 
         public IEnumerable<Book> UnBorrowableBooks()
         {
-            return _books.Where(a => a.Borrowed).ToList();
+            //return _books.Where(a => a.Borrowed).ToList();
+            var books = _db.Table<Book>().Where(b => b.Borrowed);
+            return books;
         }
 
         public Book? UpdateBookBorrowStatus(int bookId)
         {
-            var book = _books.First(a => a.Id == bookId);
-            if (book == null)
-            {
-                return book;
+            var book = GetBook(bookId);
+            if (book == null) {
+                return null;
             }
             book.Borrowed = !book.Borrowed;
+            _db.InsertOrReplace(book);
+            // TODO: yeah, no transactions, and really should re-get to get the real value
             return book;
         }
     }

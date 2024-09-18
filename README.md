@@ -82,3 +82,6 @@ To start the backend API, run `dotnet run` in the API folder. It should be hoste
    - of course, this is kinda wrong, as we can't mutate the _books...
 2. I've changed useData to also return the set() function, and have exported request to make the borrow toggle API call consistent.
 3. I've removed the *Borrow* menu Item, as it's only useful when called with a bookId - see the return/borrow buttons in the Book list
+4. moving to SQLite as the Book database
+  * `sqlite3 /home/sven/Documents/MyData.db -cmd "select * from Book;"`
+  * the location of the database is printed out by the server, but it's platform dependent

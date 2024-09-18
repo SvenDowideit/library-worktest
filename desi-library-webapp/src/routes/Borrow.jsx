@@ -17,10 +17,6 @@ function Borrow() {
     return <Box><Loading /></Box>
   }
 
-  if (book?.borrowed) {
-    action = "Return";
-  }
-
   return (
     <Box>
       <Typography variant="h6">{book?.name}</Typography>
