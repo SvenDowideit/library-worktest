@@ -89,4 +89,7 @@ To start the backend API, run `dotnet run` in the API folder. It should be hoste
   * if the SQLite DB file doesn't exist, re-initialise it with the original data
 5. replaced the toggle book status API with a borrow, and a return API endpoint, and updated the UI
   * there is a race condition if the user has more than one browser open to the same borrow page - and I havn't found the way to trigger a re-render.
+6. set the Book.Borrow value to not be in the database, and used the BookBorrowRecs table, and generated the values.
+
+Yup, I'd love to have had time to work out how to write tests for the BooksContext and API - that was interesting :)
 
